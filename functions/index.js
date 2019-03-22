@@ -6,6 +6,7 @@ const engines = require('consolidate');
 const firebase = require('firebase-admin');
 const bodyParser = require('body-parser');
 
+var provider = new firebase.auth.GoogleAuthProvider();
 //Initialization
 const firebaseApp = firebase.initializeApp(
     functions.config().firebase
@@ -37,6 +38,11 @@ index.post('/',(request, response) => {
         response.send("200 OK");
 })
 
+index.post('/update',(req,res)=>{
+    updateRating(req.body.key,req.body.value_rating)
+    res.send("200 OK")
+})
+
 //Database
 var database = firebase.database();
 var db = admin.firestore();
@@ -52,10 +58,53 @@ function addRecipe(name, id, user, cuisine, time, serving, ingredients, difficul
         serving: serving,
         ingredients: ingredients,
         difficulty: difficulty,
-        procedure: procedure
+        procedure: procedure,
+        num_rating: 0,
+        total_rating: 0
       }).then(ref => {
         console.log('Added document with ID: ', ref.id);
         return 1;
+      });
+}
+
+//Authentication
+
+
+function googleLogin(){
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+    });
+}
+
+
+//Get Rating
+
+function getRating(total_rating, num_rating){
+    rating = total_rating/num_rating
+    return rating
+}
+
+//Update Rating
+function updateRating(key,value_rating){
+    var recipeRating = db.collection('recipe').doc(key)
+    var transaction = db.runTransaction(t => {
+        return t.get(recipeRating)
+          .then(doc => {
+            var new_num_rating = doc.data().num_rating + 1;
+            t.update(recipeRating, {num_rating:new_num_rating});
+            var new_total_rating = doc.data().total_rating + value_rating;
+            t.update(recipeRating, {total_rating:new_total_rating});
+          });
+      }).then(result => {
+        console.log('Transaction success!');
+      }).catch(err => {
+        console.log('Transaction failure:', err);
       });
 }
 
