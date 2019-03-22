@@ -9,17 +9,17 @@ const firebaseApp = firebase.initializeApp(
     functions.config().firebase
 );
 
-const app = express();
-app.engine('hbs', engines.handlebars);
-app.set('views', './views');
-app.set('view engine', 'hbs');
+const index = express();
+index.engine('hbs', engines.handlebars);
+index.set('views', './views');
+index.set('view engine', 'hbs');
 
 
 //HTTPS GET requests
     //Index render at '/'
-app.get('/',(request,response) => {
+index.get('/',(request,response) => {
     response.render('index');
 });
 
 //Exporting 
-exports.app = functions.https.onRequest(app);
+exports.index = functions.https.onRequest(index);

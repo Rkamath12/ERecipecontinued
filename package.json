@@ -13,6 +13,5 @@
     "popper.js": "^1.14.7",
     "sass": "^1.17.3"
   },
-  "devDependencies": {},
-  "private": true
+  "devDependencies": {}
 }
