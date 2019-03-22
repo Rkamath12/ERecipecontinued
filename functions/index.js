@@ -1,4 +1,5 @@
 //Requirements
+const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const express = require('express');
 const engines = require('consolidate');
@@ -38,10 +39,11 @@ index.post('/',(request, response) => {
 
 //Database
 var database = firebase.database();
-var recipeRef = database.collection('recipe');
+var db = admin.firestore();
+var recipeRef = db.collection('recipe');
 
 function addRecipe(name, id, user, cuisine, time, serving, ingredients, difficulty, procedure){
-    var addDoc = database.collection('recipes').add({
+    var addDoc = db.collection('recipes').add({
         name: name,
         id: id,
         user: user,
@@ -53,6 +55,7 @@ function addRecipe(name, id, user, cuisine, time, serving, ingredients, difficul
         procedure: procedure
       }).then(ref => {
         console.log('Added document with ID: ', ref.id);
+        return 1;
       });
 }
 
