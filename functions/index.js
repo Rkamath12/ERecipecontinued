@@ -6,7 +6,6 @@ const engines = require('consolidate');
 const firebase = require('firebase-admin');
 const bodyParser = require('body-parser');
 
-var provider = new firebase.auth.GoogleAuthProvider();
 //Initialization
 const firebaseApp = firebase.initializeApp(
     functions.config().firebase
@@ -16,6 +15,7 @@ const index = express();
 index.engine('hbs', engines.handlebars);
 index.set('views', './views');
 index.set('view engine', 'hbs');
+
 
 index.use(bodyParser.urlencoded({
     extended:true
@@ -69,7 +69,7 @@ function addRecipe(name, id, user, cuisine, time, serving, ingredients, difficul
 
 //Authentication
 
-
+/* var provider = new firebase.auth.GoogleAuthProvider();
 function googleLogin(){
     firebase.auth().signInWithPopup(provider).then((result) => {
         var token = result.credential.accessToken;
@@ -81,6 +81,47 @@ function googleLogin(){
         var email = error.email;
         var credential = error.credential;
     });
+} */
+
+function onSignIn(googleUser) {
+    console.log('Google Auth Response', googleUser);
+    // We need to register an Observer on Firebase Auth to make sure auth is initialized.
+    var unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
+        unsubscribe();
+        // Check if we are already signed-in Firebase with the correct user.
+        if (!isUserEqual(googleUser, firebaseUser)) {
+            // Build Firebase credential with the Google ID token.
+            var credential = firebase.auth.GoogleAuthProvider.credential(
+                googleUser.getAuthResponse().id_token);
+            // Sign in with credential from the Google user.
+            firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+            });
+        } else {
+            console.log('User already signed-in Firebase.');
+        }
+    });
+}
+
+function isUserEqual(googleUser, firebaseUser) {
+    if (firebaseUser) {
+        var providerData = firebaseUser.providerData;
+        for (var i = 0; i < providerData.length; i++) {
+            if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
+                providerData[i].uid === googleUser.getBasicProfile().getId()) {
+                // We don't need to reauth the Firebase connection.
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 

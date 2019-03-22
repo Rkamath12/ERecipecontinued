@@ -2,6 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="google-signin-client_id" content="752269079566-erfp0rugs3mpk30ddnsvt9804jq2aata.apps.googleusercontent.com">
+    <meta name="google-signin-cookiepolicy" content="single_host_origin">
+    <meta name="google-signin-scope" content="profile email">
     <title> ERecipe</title>
     <link rel="stylesheet" href="css/index.css">
   </head>
@@ -20,7 +23,7 @@
        <a class="nav-link" href="#">View</a>
      </li>
      <li class="nav-item">
-       <a class="nav-link" href="#">Login</a>
+      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
      </li>
    </ul>
   </div>
@@ -39,7 +42,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <a data-toggle = "modal"><img src="delish-lasagna-bolognese-horizontal-1543346979.png" class="d-block w-100" alt="..." width="300" height="600"></a>
+        <a data-toggle = "modal" role = "button"><img src="delish-lasagna-bolognese-horizontal-1543346979.png" class="d-block w-100" alt="..." width="300" height="600"></a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Lasagna Bolognese</h5>
           <p>Several layers of goodness</p>
@@ -60,17 +63,6 @@
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-
         <div id="carousel3" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carousel3" data-slide-to="0" class="active"></li>
@@ -94,15 +86,6 @@
               </div>
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carousel3" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carousel3" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
       </div>
       <div>
 <div id="carousel9" class="carousel slide" data-ride="carousel">
@@ -128,15 +111,6 @@
           </div>
         </div>
       </div>
-        <a class="carousel-control-prev" href="#carousel9" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel9" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
     </div>
     <div>
           <div id="carousel4" class="carousel slide" data-ride="carousel">
@@ -161,15 +135,6 @@
            </div>
          </div>
         </div>
-        <a class="carousel-control-prev" href="#carousel4" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel4" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
     </div>
     <div>
           <div id="carousel5" class="carousel slide" data-ride="carousel">
@@ -194,15 +159,6 @@
           </div>
       </div>
     </div>
-        <a class="carousel-control-prev" href="#carousel5" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel5" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
     </div>
     <div>
           <div id="carousel6" class="carousel slide" data-ride="carousel">
@@ -228,17 +184,13 @@
         </div>
       </div>
     </div>
-        <a class="carousel-control-prev" href="#carousel6" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel6" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
 </div>
+
+{{!-- Modals --}}
+
+
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
