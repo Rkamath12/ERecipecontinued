@@ -55,7 +55,7 @@ index.post('/update',(req,res)=>{
 //Database
 var database = firebase.database();
 var db = firebase.firestore();
-var recipeRef = db.collection('recipe');
+var recipeRef = db.collection('recipes');
 
 function addRecipe(name, id, user, cuisine, time, serving, ingredients, difficulty, procedure){
     var addDoc = db.collection('recipes').add({
@@ -104,7 +104,7 @@ function getRating(total_rating, num_rating){
 
 //Update Rating
 function updateRating(key,value_rating){
-    var recipeRating = db.collection('recipe').doc(key)
+    var recipeRating = db.collection('recipes').doc(key)
     var transaction = db.runTransaction(t => {
         return t.get(recipeRating)
           .then(doc => {
