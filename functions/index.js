@@ -122,5 +122,23 @@ function updateRating(key,value_rating){
       });
 }
 
+//Filter
+
+function filterResults(ingredients){
+    var recipes = db.collection('recipe');
+    ingredients.forEach(element => {
+        recipes = recipes.where('ingredients','array-contains',element)
+    });
+    return recipes
+}
+
+//Search
+
+function searchResults(name){
+    var recipes = db.collection('recipe').where('name','==', name)
+    return recipes
+}
+
+
 //Exporting 
 exports.index = functions.https.onRequest(index);
