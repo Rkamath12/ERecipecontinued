@@ -7021,4 +7021,10 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 .scroll {
-  overflow-y: auto; }
+  overflow-y: hidden;
+  overflow-x: scroll; }
+
+.card-body {
+  min-height: 300px;
+  min-width: 300px;
+  margin-right: 5px; }
