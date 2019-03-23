@@ -34,9 +34,8 @@
         <button type="button" class="btn btn-light">Upload Recipe
         </button>
       </ul>
-    <
    <div>
-  <div class="container">
+  <div class="container invisible">
           <form role="form">
             <label for="Recipe Name">Name:</label>
             <input type="Name" class="form-control" id="Name" placeholder="Enter name of recipe" name="recipe name">
@@ -75,9 +74,6 @@
         </form>
      </div>
      </div>
-     </div>
-     </div>
-     </div>
      </ul>
      </div>
               <form class="form-inline">
@@ -94,31 +90,15 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <!-- image trigger modal -->
-          <a data-target="#ItalianModal" data-toggle="modal">
+          <a role = "button" data-target="#ItalianModal" data-toggle="modal">
             <img src="869252.jpg">
           </a>
           <!-- Modal -->
         </div>
-          <div tabindex="2" class="modal fade" id="italianModal" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
-                  <h4 class="modal-title" id="ItalianModal"></h4>
-                </div>
-                <div class="modal-body">
-                  test
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                  <button class="btn btn-primary" type="button">Print</button>
-                </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
-          <a data-toggle="modal" role = "button" target = "italianModal"><img src="869252.jpg" class="d-block w-100" alt="..." width="300" height="600"> </a>
+        <div class = "carousel-item">
+          <img src="869252.jpg" class="d-block w-100" alt="..." width="300" height="600"></a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>Italian</h5>
+            <a role = "button" target = "#ItalianModal" data-target="modal"><h5>Italian</h5></a>
             <p>Pizza de Pasta</p>
           </div>
         </div>
