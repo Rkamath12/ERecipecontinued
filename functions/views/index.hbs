@@ -34,7 +34,7 @@
         <button type="button" class="btn btn-light">Upload Recipe
         </button>
       </ul>
-    </div>
+    <
    <div>
   <div class="container">
           <form role="form">
@@ -93,14 +93,37 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <a data-toggle="modal"><img src="869252.jpg" class="d-block w-100" alt="..." width="300" height="600"> </a>
+          <!-- image trigger modal -->
+          <a data-target="#ItalianModal" data-toggle="modal">
+            <img src="869252.jpg">
+          </a>
+          <!-- Modal -->
+        </div>
+          <div tabindex="2" class="modal fade" id="italianModal" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+                  <h4 class="modal-title" id="ItalianModal"></h4>
+                </div>
+                <div class="modal-body">
+                  test
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary" type="button">Print</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          <a data-toggle="modal" role = "button" target = "italianModal"><img src="869252.jpg" class="d-block w-100" alt="..." width="300" height="600"> </a>
           <div class="carousel-caption d-none d-md-block">
             <h5>Italian</h5>
             <p>Pizza de Pasta</p>
           </div>
         </div>
         <div class="carousel-item">
-          <a data-toggle="modal"><img src="landscape-1506456062-delish-spaghetti-meatballs.jpg" class="d-block w-100"
+          <a data-toggle="modal" role= "button" target = ""><img src="landscape-1506456062-delish-spaghetti-meatballs.jpg" class="d-block w-100"
               alt="..." width="300" height="600"></a>
           <div class="carousel-caption d-none d-md-block">
             <h5>Spaghetti and Meatballs</h5>
