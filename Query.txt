@@ -37,6 +37,11 @@
           <input type="ingredient input" class="form-control" id="ingredients" placeholder="Enter ingredients"
             name="ingredients input">
         </div>
+        <div class="form-group">
+          <label for="pwd">Procudure:</label>
+          <input type="procudure" class="form-control" id="procudure" placeholder="Enter steps"
+            name="procudure">
+        </div>
         <div class="checkbox">
           <label><input type="checkbox" name="remember"> Accept changes</label>
         </div>
@@ -47,5 +52,3 @@
   </div>
 </div>
         </form>
-
-
