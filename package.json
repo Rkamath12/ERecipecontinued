@@ -1,5 +1,5 @@
 {
-  "name": "ERecipe",
+  "name": "Continued Website",
   "description": "APP",
   "scripts": {
     "sass": "node-sass -w scss/ -o public/css --recursive"
